@@ -77,7 +77,7 @@ jobs:
           # "-check.v" (must be after package list) outputs timings
           set -e
           go test -timeout 25m -race -short -cover ./cmd ./common ./common/parallel ./ste ./azbfs ./sddl "-check.v"
-          go test -timeout 10m -v ./e2etest
+          go test -timeout 30m -v ./e2etest
           GOARCH=amd64 GOOS=linux go build -o azcopy_linux_amd64
         name: 'Run_unit_tests'
         env:
