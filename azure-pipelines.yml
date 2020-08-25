@@ -90,8 +90,8 @@ jobs:
           go test -timeout 10m -v ./e2etest
         name: 'Run_e2e_tests'
         env:
-          AZCOPY_E2E_ACCOUNT_KEY: $(ACCOUNT_KEY)
-          AZCOPY_E2E_ACCOUNT_NAME: $(ACCOUNT_KEY)
+          AZCOPY_E2E_ACCOUNT_KEY: $(AZCOPY_E2E_ACCOUNT_KEY)
+          AZCOPY_E2E_ACCOUNT_NAME: $(AZCOPY_E2E_ACCOUNT_NAME)
       - script: |
           go build -o test-validator ./testSuite/
           mkdir test-temp
