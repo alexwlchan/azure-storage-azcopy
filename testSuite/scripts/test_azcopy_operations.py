@@ -3,6 +3,7 @@ import json
 import unittest
 from collections import namedtuple
 import sys
+import os
 
 class Azcopy_Operation_User_Scenario(unittest.TestCase):
     def setUp(self):
