@@ -8,7 +8,8 @@ import os
 class Azcopy_Operation_User_Scenario(unittest.TestCase):
     def setUp(self):
         cmd = util.Command("login").add_arguments("--service-principal").add_flags("application-id", os.environ['ACTIVE_DIRECTORY_APPLICATION_ID'])
-        cmd.execute_azcopy_copy_command()
+        out = cmd.execute_azcopy_operation_get_output()
+        print(out)
 
     def tearDown(self):
         cmd = util.Command("logout")
