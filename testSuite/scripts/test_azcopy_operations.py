@@ -5,6 +5,14 @@ from collections import namedtuple
 import sys
 
 class Azcopy_Operation_User_Scenario(unittest.TestCase):
+    def setUp(self):
+        cmd = util.Command("login").add_arguments("--service-principal").add_flags("application-id", os.environ['ACTIVE_DIRECTORY_APPLICATION_ID'])
+        cmd.execute_azcopy_copy_command()
+
+    def tearDown(self):
+        cmd = util.Command("logout")
+        cmd.execute_azcopy_copy_command()
+
 
     # test_remove_virtual_directory  creates a virtual directory, removes the virtual directory created
     # and then verifies the contents of virtual directory.
@@ -26,6 +34,7 @@ class Azcopy_Operation_User_Scenario(unittest.TestCase):
         self.assertTrue(result)
 
     def test_remove_virtual_directory_oauth(self):
+        cmd = util.Command("login").add_arguments("--service-principal").add_arguments("--application-id=68390a19-a643-458b-b726-408abf67b4fc")
         # create dir dir_10_files and 1 kb files inside the dir.
         dir_name = "dir_" + str(10) + "_files_rm_oauth"
         dir_n_files_path = util.create_test_n_files(1024, 10, dir_name)
